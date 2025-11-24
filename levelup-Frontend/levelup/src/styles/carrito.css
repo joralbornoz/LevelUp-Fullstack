@@ -1,0 +1,121 @@
+.carrito {
+  position: fixed;
+  right: 100px;
+  top: 110px;
+  width: 320px;
+  max-height: calc(80vh - 25vh);
+  overflow-y: auto;
+  background-color: #111;
+  border: 1px solid #1e90ff;
+  border-radius: 10px;
+  padding: 50px;
+  box-shadow: 0 0 15px rgba(30, 144, 255, 0.5);
+  color: #fff;
+  z-index: 10;
+}
+
+.carrito-titulo {
+  font-family: "Orbitron", sans-serif;
+  text-align: center;
+  margin-bottom: 1px;
+}
+
+.carrito-vacio {
+  text-align: center;
+  font-size: 1rem;
+}
+
+.carrito-lista {
+  list-style: none;
+  padding: 0px;
+  margin: 1px ;
+}
+
+.carrito-item {
+  border-bottom: 1px solid #1e90ff;
+  padding: 25px 40px 4px 15px;
+}
+
+.carrito-info-principal {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1rem;
+}
+S
+.carrito-nombre {
+  font-weight: bold;
+}
+
+.carrito-controles {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin-bottom: 1px;
+}
+
+.carrito-btn-cant {
+  background-color: #1e90ff;
+  border: none;
+  color: white;
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.carrito-btn-cant:hover {
+  background-color: #39ff14;
+}
+
+.carrito-cantidad {
+  min-width: 100px;
+  text-align: center;
+}
+
+.carrito-subtotal {
+  font-size: 1rem;
+  color: #ccc;
+}
+
+.carrito-resumen {
+  border-top: 1px solid #1e90ff;
+  margin-top: 15px;
+  padding-top: 10px;
+  font-size: 1rem;
+}
+
+.carrito-acciones {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.btn-vaciar,
+.btn-pagar {
+  flex: 1;
+  padding: 8px;
+  border-radius: 6px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-vaciar {
+  background-color: #444;
+  color: #fff;
+}
+
+.btn-vaciar:hover {
+  background-color: #666;
+}
+
+.btn-pagar {
+  background-color: #39ff14;
+  color: #000;
+}
+
+.btn-pagar:hover {
+  background-color: #5dff3d;
+}

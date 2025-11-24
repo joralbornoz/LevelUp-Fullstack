@@ -1,0 +1,109 @@
+.admin-container {
+  width: 100%;
+  padding: 25px;
+  background-color: #000;
+  color: #fff;
+}
+
+
+.admin-title {
+  font-family: "Orbitron", sans-serif;
+  font-size: 32px;
+  text-align: center;
+  margin-bottom: 30px;
+  color: #39ff14;
+  text-shadow: 0 0 12px rgba(57, 255, 20, 0.7);
+}
+
+.tabla-admin {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: #111;
+  color: white;
+  box-shadow: 0 0 20px rgba(30, 144, 255, 0.4);
+  border: 1px solid #1e90ff;
+}
+
+.tabla-admin th,
+.tabla-admin td {
+  padding: 12px;
+  border: 1px solid #1e90ff;
+  vertical-align: middle;         
+  text-align: center;              
+}
+
+.tabla-admin th {
+  background-color: #0d0d0d;
+  font-family: "Orbitron", sans-serif;
+  color: #39ff14;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.tabla-admin tr:nth-child(even) {
+  background-color: #161616;
+}
+
+.tabla-admin tr:hover {
+  background-color: #1e1e1e;
+  transition: 0.2s;
+}
+
+
+.admin-input,
+.admin-select {
+  background-color: #0f0f0f;
+  border: 1px solid #1e90ff;
+  color: white;
+  padding: 6px 8px;
+  border-radius: 5px;
+  width: 90%;                 
+  margin: auto;               
+  display: block;
+  text-align: center;
+}
+
+.admin-input::placeholder {
+  color: #999;
+}
+
+.admin-btn {
+  background-color: #1e90ff;
+  border: none;
+  color: white;
+  padding: 8px 14px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: all 0.2s ease-in-out;
+  width: 90%;                  
+  margin: 4px auto;
+  display: block;
+}
+
+.admin-btn:hover {
+  background-color: #39ff14;
+  box-shadow: 0 0 10px rgba(57, 255, 20, 0.8);
+  transform: scale(1.05);
+}
+
+.admin-btn-delete {
+  background-color: #ff1e1e !important;
+}
+
+.admin-btn-delete:hover {
+  background-color: #ff4d4d !important;
+  box-shadow: 0 0 10px rgba(255, 70, 70, 0.8);
+}
+.compras-list {
+  margin-top: 15px;
+  padding-left: 20px;
+}
+
+.compras-list li {
+  margin-bottom: 8px;
+  color: #fff;
+  border-left: 4px solid #1e90ff;
+  padding-left: 10px;
+}
