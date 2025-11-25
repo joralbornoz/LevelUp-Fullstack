@@ -1,5 +1,10 @@
-// src/main/java/cl/duoc/levelup/controller/AdminController.java
 package cl.duoc.levelup.controller;
+
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 
 import cl.duoc.levelup.model.Usuario;
 import cl.duoc.levelup.model.Compra;
@@ -12,9 +17,11 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
+
 @RestController
 @RequestMapping("/api/admin")
 @CrossOrigin(origins = "*")
+@Tag(name = "Administración de Usuarios", description = "Operaciones administrativas para gestión de usuarios")
 public class AdminController {
 
     @Autowired
@@ -24,13 +31,18 @@ public class AdminController {
     private CompraService compraService;
 
     @GetMapping("/usuarios")
+    @Operation(summary = "Listar todos los usuarios",
+            description = "Retorna una lista de todos los usuarios registrados en el sistema.")
     public List<Usuario> listarUsuarios() {
         return usuarioService.findAll();
     }
 
-    // 🆕 actualizar solo nombre y email
+
     @PutMapping("/usuarios/{id}/datos")
+    @Operation(summary = "Actualizar nombre y email del usuario",
+            description = "Permite modificar el nombre y/o email de un usuario existente.")
     public Usuario actualizarDatosBasicos(
+            @Parameter(description = "ID del usuario", required = true)
             @PathVariable Long id,
             @RequestBody DatosBasicosDTO dto
     ) {
@@ -50,7 +62,10 @@ public class AdminController {
     }
 
     @PutMapping("/usuarios/{id}/rol")
+    @Operation(summary = "Actualizar rol del usuario",
+            description = "Permite cambiar el rol de un usuario (ejemplo: USER, ADMIN).")
     public Usuario actualizarRol(
+            @Parameter(description = "ID del usuario", required = true)
             @PathVariable Long id,
             @RequestBody RolDTO dto
     ) {
@@ -68,7 +83,10 @@ public class AdminController {
     }
 
     @PutMapping("/usuarios/{id}/password")
+    @Operation(summary = "Actualizar password del usuario",
+            description = "Permite modificar la contraseña de un usuario, asegurando que cumpla con los requisitos mínimos.")
     public Usuario actualizarPassword(
+            @Parameter(description = "ID del usuario", required = true)
             @PathVariable Long id,
             @RequestBody PasswordDTO dto
     ) {
@@ -86,8 +104,12 @@ public class AdminController {
     }
 
     @DeleteMapping("/usuarios/{id}")
+    @Operation(summary = "Eliminar usuario",
+            description = "Elimina un usuario del sistema por su ID.")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void eliminarUsuario(@PathVariable Long id) {
+    public void eliminarUsuario(
+            @Parameter(description = "ID del usuario", required = true)
+            @PathVariable Long id) {
         Usuario u = usuarioService.findById(id);
         if (u == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario no encontrado");
@@ -96,7 +118,10 @@ public class AdminController {
     }
 
     @GetMapping("/usuarios/{id}/compras")
-    public List<Compra> comprasUsuario(@PathVariable Long id) {
+    @Operation(summary = "Obtener compras de un usuario")
+    public List<Compra> comprasUsuario(
+            @Parameter(description = "ID del usuario", required = true)
+            @PathVariable Long id) {
         return compraService.obtenerComprasUsuario(id);
     }
 
