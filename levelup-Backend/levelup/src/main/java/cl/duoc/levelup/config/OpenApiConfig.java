@@ -16,10 +16,13 @@ import org.springframework.context.annotation.Configuration;
                 title = "LevelUp Gamer API",
                 version = "1.0.0",
                 description = """
-                        API REST del proyecto **LevelUp Gamer**.
-                        Incluye módulos de autenticación (JWT), productos,
-                        compras, gestión de usuarios y panel de administración.
-                        """,
+                API REST del proyecto **LevelUp Gamer**.
+                Incluye módulos de autenticación (JWT), productos, compras,
+                gestión de usuarios y panel de administración.
+                Además, soporta operaciones CRUD completas y tiene integración con frontend.
+                La API está documentada con Swagger para facilitar pruebas y mantenimiento.
+                """,
+
                 contact = @Contact(
                         name = "Github",
                         url = "https://github.com/joralbornoz"
@@ -32,9 +35,9 @@ import org.springframework.context.annotation.Configuration;
         ),
         servers = {
                 @Server(
-                        description = "Servidor local",
-                        url = "http://localhost:8080"
-                )
+                        description = "Servidor local Frontend",
+                        url = "http://localhost:5173/"
+                ),
         },
         security = {
                 @SecurityRequirement(name = "bearerAuth")
