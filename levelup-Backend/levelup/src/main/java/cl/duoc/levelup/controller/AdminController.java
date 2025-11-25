@@ -1,11 +1,18 @@
 package cl.duoc.levelup.controller;
 
 
+
+
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
-
+import cl.duoc.levelup.dto.DatosBasicosDTO;
+import cl.duoc.levelup.dto.RolDTO;
+import cl.duoc.levelup.dto.PasswordDTO;
 import cl.duoc.levelup.model.Usuario;
 import cl.duoc.levelup.model.Compra;
 import cl.duoc.levelup.service.UsuarioService;
@@ -31,8 +38,25 @@ public class AdminController {
     private CompraService compraService;
 
     @GetMapping("/usuarios")
-    @Operation(summary = "Listar todos los usuarios",
-            description = "Retorna una lista de todos los usuarios registrados en el sistema.")
+    @Operation(
+            summary = "Listar todos los usuarios",
+            description = "Retorna una lista de todos los usuarios registrados en el sistema.",
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "Lista de usuarios obtenida exitosamente",
+                            content = @Content(
+                                    mediaType = "application/json",
+                                    schema = @Schema(implementation = Usuario.class)
+                            )
+                    ),
+                    @ApiResponse(
+                            responseCode = "403",
+                            description = "Acceso no autorizado",
+                            content = @Content(mediaType = "application/json")
+                    )
+            }
+    )
     public List<Usuario> listarUsuarios() {
         return usuarioService.findAll();
     }
@@ -125,28 +149,4 @@ public class AdminController {
         return compraService.obtenerComprasUsuario(id);
     }
 
-    public static class DatosBasicosDTO {
-        private String nombre;
-        private String email;
-
-        public String getNombre() { return nombre; }
-        public void setNombre(String nombre) { this.nombre = nombre; }
-
-        public String getEmail() { return email; }
-        public void setEmail(String email) { this.email = email; }
-    }
-
-    public static class RolDTO {
-        private String rol;
-
-        public String getRol() { return rol; }
-        public void setRol(String rol) { this.rol = rol; }
-    }
-
-    public static class PasswordDTO {
-        private String password;
-
-        public String getPassword() { return password; }
-        public void setPassword(String password) { this.password = password; }
-    }
 }

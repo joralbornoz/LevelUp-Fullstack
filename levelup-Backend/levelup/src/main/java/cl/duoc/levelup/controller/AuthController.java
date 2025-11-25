@@ -2,10 +2,12 @@ package cl.duoc.levelup.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import cl.duoc.levelup.model.Usuario;
 import cl.duoc.levelup.repository.UsuarioRepository;
 import cl.duoc.levelup.security.JwtUtil;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -33,7 +35,26 @@ public class AuthController {
 
     @Operation(
             summary = "Iniciar sesión y obtener un token JWT",
-            description = "Permite a un usuario autenticarse usando email y password, devolviendo un token JWT.")
+            description = "Permite a un usuario autenticarse usando email y password, devolviendo un token JWT.",
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "Autenticación exitosa",
+                            content = @Content(
+                                    mediaType = "application/json",
+                                    schema = @Schema(implementation = Map.class)
+                            )
+                    ),
+                    @ApiResponse(
+                            responseCode = "403",
+                            description = "Credenciales inválidas o acceso denegado",
+                            content = @Content(
+                                    mediaType = "application/json",
+                                    schema = @Schema(implementation = Map.class)
+                            )
+                    )
+            }
+    )
     @PostMapping("/login")
     public Map<String, Object> login(@Parameter(description = "Datos de inicio de sesión", required = true)
             @RequestBody Map<String, String> body) {

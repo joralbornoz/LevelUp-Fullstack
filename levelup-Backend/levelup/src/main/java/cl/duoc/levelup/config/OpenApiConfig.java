@@ -21,7 +21,7 @@ import org.springframework.context.annotation.Configuration;
                         compras, gestión de usuarios y panel de administración.
                         """,
                 contact = @Contact(
-                        name = "Soporte LevelUp",
+                        name = "Github",
                         url = "https://github.com/joralbornoz"
 
                 ),
