@@ -1,4 +1,5 @@
 // src/components/ProductoCard.jsx
+
 function ProductoCard({ producto, agregar }) {
   const { codigo, nombre, descripcion, imagen, precioTexto, stock } = producto;
 

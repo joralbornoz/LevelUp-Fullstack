@@ -1,7 +1,7 @@
 // src/services/productosApi.js
 
 
-const API_URL = "http://localhost:8080/api/productos";
+const API_URL = `${import.meta.env.VITE_API_CATALOG_URL}/productos`;
 
 function normalizarProducto(apiProd) {
   return {
@@ -21,6 +21,7 @@ function normalizarProducto(apiProd) {
 }
 
 export async function obtenerProductosApi() {
+  console.log("URL PRODUCTOS:", API_URL);
   const res = await fetch(API_URL);
 
   if (!res.ok) {

@@ -1,7 +1,8 @@
 // src/services/authService.js
+const API_AUTH_BASE = import.meta.env.VITE_API_AUTH_URL; // debe ser http://localhost:8081/api
 
-const API_USUARIOS = "http://localhost:8080/api/usuarios";
-const API_AUTH = "http://localhost:8080/api/auth";
+const API_USUARIOS = `${API_AUTH_BASE}/usuarios`;
+const API_AUTH = `${API_AUTH_BASE}/auth`;
 
 // ----- REGISTRO -----
 export async function registrarUsuario(datos) {

@@ -1,7 +1,9 @@
 // src/services/adminService.js
 import { authFetch } from "./apiClient";
 
-const API_ADMIN = "http://localhost:8080/api/admin";
+
+const API_ADMIN = `${import.meta.env.VITE_API_AUTH_URL}/admin`;
+const API_COMPRAS = `${import.meta.env.VITE_API_CATALOG_URL}/compras`;
 
 
 export async function obtenerUsuariosAdmin() {
@@ -24,7 +26,8 @@ export async function obtenerUsuariosAdmin() {
 
 export async function obtenerComprasUsuarioAdmin(usuarioId) {
   try {
-    const res = await authFetch(`${API_ADMIN}/usuarios/${usuarioId}/compras`);
+    // AHORA usamos el microservicio de catálogo
+    const res = await authFetch(`${API_COMPRAS}/usuario/${usuarioId}`);
 
     if (!res.ok) {
       console.error("Error HTTP obtenerComprasUsuarioAdmin:", res.status);

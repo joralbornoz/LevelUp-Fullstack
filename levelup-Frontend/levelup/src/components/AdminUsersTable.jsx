@@ -1,4 +1,6 @@
 // src/components/AdminUsersTable.jsx
+import React from "react";
+
 function AdminUsersTable({
   usuarios,
   adminActual,

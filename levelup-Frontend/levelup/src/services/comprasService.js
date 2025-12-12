@@ -1,7 +1,7 @@
 // src/services/comprasService.js
 import { authFetch } from "./apiClient";
 
-const API_URL = "http://localhost:8080/api/compras";
+const API_URL = `${import.meta.env.VITE_API_CATALOG_URL}/compras`;
 
 
 export async function obtenerComprasUsuario(usuarioId) {
